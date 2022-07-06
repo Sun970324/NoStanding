@@ -59,6 +59,7 @@ function Alarm({ userInfo, data, idx, getAlarmData }) {
           })
       );
   };
+  //alarm데이터를 요청하는 함수.
   const clickOpenReview = () => {
     setOpenReview(true);
   };

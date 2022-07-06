@@ -58,5 +58,5 @@ function ShopInfoReview({review}) {
     </Container>
   )
 }
-
+//가게 상세정보에 리뷰리스트 컴포넌트
 export default ShopInfoReview;

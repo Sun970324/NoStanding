@@ -92,8 +92,6 @@ function LoginModal({
   controlClose,
   getUserInfo,
   getUserLogin,
-  clickCheckBox,
-  holdLogin,
 }) {
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
@@ -106,7 +104,7 @@ function LoginModal({
   const passwordSetter = (e) => {
     setPassword(e.target.value);
   };
-
+  //유저가 입력한 아이디와 패스워드를 state에 할당함.
   const clearForm = () => {
     setId("");
     setPassword("");
@@ -123,7 +121,6 @@ function LoginModal({
           withCredentials: true,
         }
       )
-
       .then((resp) => {
         const userInfo = resp.data.data.userInfo;
         getUserInfo(userInfo);
@@ -136,9 +133,9 @@ function LoginModal({
       });
     clearForm();
   };
+  //로그인 버튼을 클릭하면 유저 정보를 서버에게 전달하고 로그인 여부를 확인하는 state를 true로 바꿈.
   const clickOauthBtn = (val) => {
     const url = process.env.REACT_APP_CLI_URL;
-
     if (val === "kakao") {
       window.location.assign(
         `https://kauth.kakao.com/oauth/authorize?client_id=42009e870cdf666e6d0d8ae29350f9cb&redirect_uri=${url}/callbackkakao&response_type=code&scope=account_email`
@@ -149,10 +146,12 @@ function LoginModal({
       );
     }
   };
+  //oauth 로그인을 할 때 oauth요청을 보냄.
   const clickFindPwdBtn = () => {
     navigate("/Findpassword");
     controlClose(false);
   };
+  //비밀번호 찾기 화면을 보여줌
   return (
     <Modal
       ariaHideApp={false}
@@ -222,11 +221,6 @@ function LoginModal({
     </Modal>
   );
 }
-const mapStateToProps = (state) => {
-  return {
-    holdLogin: state.checkLoginHold,
-  };
-};
 const mapDispatchToProps = (dispatch) => {
   return {
     getUserInfo: (userInfo) => {
@@ -241,4 +235,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginModal);
+export default connect(null,mapDispatchToProps)(LoginModal);

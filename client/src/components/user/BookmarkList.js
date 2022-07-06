@@ -44,7 +44,7 @@ const ReviewDiv = styled.div`
 `;
 function BookmarkList({ bookmarkInfo }) {
   let img = JSON.parse(bookmarkInfo.image_src)[0].location
-
+  //JSON형태의 이미지 데이터에서 src를 파싱하여 가져온다.
   return (
     <Container>
       <Img src={img}></Img>

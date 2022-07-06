@@ -24,7 +24,7 @@ function FindPassword() {
   const inputConfirmNum = (e) => setUserConfirmNum(e.target.value);
   const inputChangePwd = (e) => setChangePwd(e.target.value);
   const inputCheckPwd = (e) => setCheckPassword(e.target.value);
-
+  //유저가 입력한 정보를 state에 할당.
   const submitCheckEmail = (e) => {
     e.preventDefault();
     setMinutes(2);
@@ -36,6 +36,7 @@ function FindPassword() {
       })
       .then((resp) => setConfirmNum(resp.data.data));
   };
+  //이메일 인증하기 버튼 누르면 서버에 요청을 보내고 이메일 인증 메일을 전송하는 함수.
   const submitConfirmNum = (e) => {
     e.preventDefault();
     console.log(confirmNum, userConfirmNum);
@@ -60,7 +61,7 @@ function FindPassword() {
       alert("인증번호가 맞지 않습니다.");
     }
   };
-
+  //유저가 입력한 인증번호와 서버가 보낸 인증번호를 비교하는 함수.
   const clickModifyPwd = () => {
     if (changePwd === checkPassword) {
       axios
@@ -74,7 +75,7 @@ function FindPassword() {
         });
     }
   };
-
+  //비밀번호 변경하기 버튼을 누르면 서버에 유저가 입력한 정보를 담아 요청을 보냄.
   useEffect(() => {
     const countdown = setInterval(() => {
       if (parseInt(seconds) > 0) {
@@ -91,7 +92,7 @@ function FindPassword() {
     }, 1000);
     return () => clearInterval(countdown);
   }, [minutes, seconds]);
-
+  //이메일 인증하기 버튼을 누르면 3분 카운트다운 시작하는 함수.
   return (
     <ColumnDiv>
       {emailCheckOK ? (

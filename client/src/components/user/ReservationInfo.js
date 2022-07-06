@@ -50,8 +50,10 @@ const Textarea = styled.textarea`
 `
 function ReservationInfo({ reservate, isToday, userInfo, getInfo }) {
   const img = JSON.parse(reservate.image_src)[0]?.location
+  //JSON 형식의 reservate에 있는 img 데이터를 파싱하여 src값을 할당.
   const [openReviewInput, setOpenReviewInput] = useState(false);
   const date = reservate.date.replace("T", " ").replace(/\..*/, "");
+  //날짜 형식을 변형함. (ex : "2022-06-19T16:00:00.000Z" -> 2022-06-19 16:00:00)
   const clickCancleBtn = () => {
     axios
       .delete(
@@ -65,9 +67,11 @@ function ReservationInfo({ reservate, isToday, userInfo, getInfo }) {
         getInfo();
       });
   };
+  // 취소버튼 클릭하면 서버에 예약 취소 요청 api를 전송함.
   const clickInputOpen = () => {
     setOpenReviewInput(true);
   };
+  //리뷰작성모달을 보여줌
   return (
     <Container>
       <div>

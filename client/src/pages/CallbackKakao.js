@@ -9,6 +9,7 @@ function CallbackKakao({ getUserLogin, getUserInfo }) {
   const url = new URL(window.location.href);
   console.log(url);
   const authorizationCode = url.searchParams.get("code");
+    //url에서 authorizationCode를 추출하여 변수에 할당
   const callbackCheck = useCallback(async () => {
     try {
       if (authorizationCode) {
@@ -31,7 +32,7 @@ function CallbackKakao({ getUserLogin, getUserInfo }) {
       navigate("/");
     }
   }, []);
-
+  //서버에 oauth authorizationCode를 담아 요청을 보내고 유저정보를 가져옴.
   useEffect(() => {
     callbackCheck();
   }, [callbackCheck]);

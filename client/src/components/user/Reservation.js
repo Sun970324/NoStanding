@@ -77,6 +77,7 @@ function Reservation({ userInfo }) {
     });
     setReservationList([...nowReservations]);
   }, [reservationDatas]);
+  // 랜딩 될 때 현재 예약을 유저에게 보여줌.
 
   const clickChooseDiv = (data) => {
     setChooseList(data);
@@ -95,7 +96,9 @@ function Reservation({ userInfo }) {
       setReservationList([...pastReservations]);
     }
   };
-
+  // 현재 예약 내역, 이전 예약 내역 Div를 클릭하면 실행되는 함수.
+  // 지금 시간과 데이터에 있는 시간을 비교하여 현재 예약 내역 Div를 클릭하면 nowDate보다 큰 시간데이터를 가지고 있는 데이터를 state에 넣고
+  // 이전 예약 내역 Div를 클릭하면 nowDate보다 작은 시간데이터를 가지고 있는 데이터를 state에 넣는다.
   return (
     <Container>
       <Div>

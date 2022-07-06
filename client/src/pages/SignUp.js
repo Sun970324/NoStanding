@@ -102,6 +102,7 @@ const RegExp = /^[a-zA-Z0-9]{4,12}$/;
 const nicknameRegExp = /^[가-힣a-zA-Z0-9]{2,10}$/;
 const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/;
 //!주석 풀면 비밀번호 유효성검사 가능
+//아이디, 닉네임, 비밀번호 유효성 검사하는 정규표현식
 
 function SingUp() {
   const [address, setAddress] = useState("");
@@ -144,7 +145,7 @@ function SingUp() {
   const clickChooseBtn = (value) => {
     setIsMaster(value);
   };
-
+  //유저회원가입인지 점주회원가입인지 유저가 클릭하면 그 값을 state에 할당함.
   const submitCheckEmail = (e) => {
     e.preventDefault();
     if (email !== "") {
@@ -168,7 +169,7 @@ function SingUp() {
       setCheckEmail(false);
     }
   };
-
+  //이메일 인증하기를 누르면 이메일 인증 메일을 보냄.
   const submitConfirmNum = (e) => {
     e.preventDefault();
     if (Number(confirmNum) === Number(userConfirmNum)) {
@@ -179,7 +180,7 @@ function SingUp() {
       alert("인증번호가 맞지 않습니다.");
     }
   };
-
+  // 유저가 입력한 숫자와 서버가 보낸 이메일 인증 번호를 비교함.
   useEffect(() => {
     const countdown = setInterval(() => {
       if (parseInt(seconds) > 0) {
@@ -196,6 +197,7 @@ function SingUp() {
     }, 1000);
     return () => clearInterval(countdown);
   }, [minutes, seconds]);
+  //이메일 인증하기 버튼을 누르면 3분 카운트다운하는 함수
   const inputUserName = (e) => {
     setUserName(e.target.value);
     if (RegExp.test(e.target.value)) {
@@ -225,7 +227,7 @@ function SingUp() {
   const inputShopCategoryCity = (e) => setShopCategoryCity(e.target.value);
   const inputEmail = (e) => setEmail(e.target.value);
   const inputConfirmNum = (e) => setUserConfirmNum(e.target.value);
-
+// Line 201~229 유저가 입력한 정보를 state에 저장
   const clickSignUpBtn = () => {
     console.log(checkEmail);
     if (onId && onNickname && onPwd && onCheckPwd && emailCheckOK) {
@@ -280,6 +282,7 @@ function SingUp() {
       alert("회원가입 정보가 충족되지 않았습니다.");
     }
   };
+  //회원가입 버튼을 누르면 해당 요청을 서버에 보냄
   return (
     <Container>
       <h1>회원가입</h1>

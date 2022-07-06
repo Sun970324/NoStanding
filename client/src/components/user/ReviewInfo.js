@@ -45,7 +45,6 @@ const Button = styled.button`
   }
 `;
 function ReviewInfo({ data, getReviewData }) {
-  console.log(data);
   const [image, setImage] = useState([]);
   const [loding, setLoding] = useState(false);
   const getImage = useCallback(async () => {
@@ -57,6 +56,7 @@ function ReviewInfo({ data, getReviewData }) {
     } else {
       setImage(parsing);
     }
+    //image값이 null이거나 빈 배열이면 state에 기본 이미지를 할당
     setLoding(true);
   }, []);
   const clickDeleteBtn = () => {
@@ -79,6 +79,7 @@ function ReviewInfo({ data, getReviewData }) {
         alert("리뷰가 삭제되었습니다.");
       });
   };
+  //리뷰 삭제 함수. 리뷰와 리뷰에 들어있는 image를 삭제하는 api를 전송.
   useEffect(() => {
     getImage();
   }, [getImage]);

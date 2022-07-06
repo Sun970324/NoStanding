@@ -135,6 +135,7 @@ function Main({ searchWord }) {
       setIsLoading(false);
     }
   }, [order, chooseCategory, chooseCategoryCity]);
+  // 모든 가게 리스트를 서버에 요청함.
   useEffect(() => {
     getShopList();
   }, [getShopList]);
@@ -148,7 +149,7 @@ function Main({ searchWord }) {
         }); //setShop(resp.data.data)
     }
   }, [searchWord]);
-
+  //유저가 입력한 검색어를 서버에 요청하여 가게 리스트를 받음.
   const pickCategory = useCallback(async () => {
     setIsLoading(true);
     if (chooseCategory !== "" && chooseCategoryCity !== "") {
@@ -176,7 +177,7 @@ function Main({ searchWord }) {
     }
     setIsLoading(false);
   }, [chooseCategory, chooseCategoryCity, order]);
-
+    //유저가 설정한 옵션 (카테고리, 도시, 정렬순)에 맞춰 가게 리스트를 서버에 요청함
   useEffect(() => {
     pickCategory();
   }, [pickCategory]);
@@ -191,7 +192,7 @@ function Main({ searchWord }) {
       setBackgroundOn("");
     }
   };
-
+  //유저가 어느 카테고리를 클릭했는지에 따라 state에 값을 할당함
   const clickCategoryCity = (value, idx) => {
     idx = String(idx);
     if (value !== chooseCategoryCity) {
@@ -202,10 +203,11 @@ function Main({ searchWord }) {
       setBackgroundCity("");
     }
   };
-
+  //유저가 어느 도시를 클릭했는지에 따라 state에 값을 할당함
   const changeSort = (e) => {
     setOrder(e.target.value);
   };
+  //유저가 어느 정렬을 선택했는지에 따라 state에 값을 할당함
   return (
     <>
       <BannerDiv>

@@ -35,10 +35,11 @@ function Bookmark({ userInfo }) {
         setBookmarks(resp.data.data);
       });
   }, []);
-
+  // shopInfo axios요청하여 데이터를 State에 할당하는 함수.
   useEffect(() => {
     getShopInfo();
   }, [getShopInfo]);
+  //uesEffect를 이용하여 랜딩이 될 때 위에 작성 된 함수를 실행시킴.
   return (
     <Container>
         <h2>즐겨찾기</h2>

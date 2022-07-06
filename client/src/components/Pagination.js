@@ -42,7 +42,6 @@ const Button = styled.button`
 
 function Pagination({ total, page, setPage }) {
   const numPages = Math.ceil(total / 12);
-
   return (
     <>
       <Nav>
@@ -67,5 +66,5 @@ function Pagination({ total, page, setPage }) {
     </>
   );
 }
-
+//페이지네이션 버튼과 기능을 구현
 export default Pagination;

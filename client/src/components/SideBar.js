@@ -154,6 +154,7 @@ function SideBar({ userInfo }) {
     </Container>
   );
 }
+//마이페이지 메뉴 바
 function mapStateToProps(state) {
   return {
     userInfo: state.loginInfo.userInfo,

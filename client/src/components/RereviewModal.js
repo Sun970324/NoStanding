@@ -27,7 +27,6 @@ const Textarea = styled.textarea`
 `;
 
 function RereviewModal({ isOpen, userInfo, alarmData }) {
-  console.log(alarmData);
   const [writeReview, setWriteReview] = useState("");
   const submitReview = (e) => {
     e.preventDefault();
@@ -59,14 +58,9 @@ function RereviewModal({ isOpen, userInfo, alarmData }) {
       })
       .then(() => isOpen(false));
   };
-
-  const changeTextarea = (e) => {
-    setWriteReview(e.target.value);
-  };
-
-  const clickExitBtn = () => {
-    isOpen(false);
-  };
+  //리뷰작성을 클릭하면 유저가 입력한 리뷰 데이터를 서버에 전송.
+  const changeTextarea = (e) => setWriteReview(e.target.value);
+  const clickExitBtn = () => isOpen(false);
 
   return (
     <Modal

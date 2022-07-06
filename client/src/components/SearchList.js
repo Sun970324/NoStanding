@@ -68,5 +68,5 @@ function SearchList({ shopInfo }) {
     </Container>
   );
 }
-
+//메인화면 가게 리스트 컴포넌트
 export default SearchList;

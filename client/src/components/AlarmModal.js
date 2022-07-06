@@ -71,6 +71,7 @@ function AlarmModal({ alarmData, userInfo, setRingAlarm, getAlarmData}) {
           });
       });
   };
+  //알람 클릭하면 읽음 처리하는 함수.
   const clickOpenReview = (id) => {
     setOpenReview(true);
     setChooseIdx(id);

@@ -29,7 +29,6 @@ const Button = styled.button`
 `;
 function UserDelete({ userInfo, logout, deleteUserInfo }) {
   const navigate = useNavigate()
-  console.log(userInfo);
   const clickDeleteBtn = () => {
     axios
       .delete(
@@ -45,6 +44,7 @@ function UserDelete({ userInfo, logout, deleteUserInfo }) {
       })
       .catch((err) => console.log(err.response.data));
   };
+  //유저 탈퇴하기 버튼 누르면 서버에 삭제 요청.
   return (
     <Container>
         <h2>회원탈퇴</h2>

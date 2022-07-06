@@ -36,6 +36,7 @@ function Notification({ alarmData,userInfo,getAlarmData }) {
             getAlarmData(resp.data.data);
           });
     }, [])
+    //useEffect를 이용하여 랜딩이 될 때 Alarm 데이터를 요청하여 값을 state에 할당.
   return (
     <Container>
       <h2>알림</h2>

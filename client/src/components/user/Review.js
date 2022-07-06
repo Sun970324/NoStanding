@@ -24,6 +24,8 @@ function Review({ userInfo }) {
       .then((resp) => {
         const shopArr = resp.data.shopArr;
         const reviews = resp.data.data.Reviews;
+        console.log(shopArr);
+        console.log(reviews);
         for (let i = 0; i < reviews.length; i++) {
           for (let j = 0; j < shopArr.length; j++) {
             if (reviews[i].shop_id === shopArr[i].id) {
@@ -34,6 +36,7 @@ function Review({ userInfo }) {
         setReviewData(reviews);
       });
   }, []);
+  //review 데이터를 요청하여 가져온 후 reviews에 있는 shopId와 shopArr에 있는 id와 비교하여 일치하는 데이터의 shopName을 reviews에 할당함.
   useEffect(() => {
     getReviewData();
   }, [getReviewData]);

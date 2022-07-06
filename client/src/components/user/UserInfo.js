@@ -69,7 +69,7 @@ function UserInfo({ user, logout, deleteUserInfo }) {
   const inputNickname = (e) => setNickname(e.target.value);
   const inputPhoneNumber = (e) => setPhoneNumber(e.target.value);
   const inputEmail = (e) => setEmail(e.target.value);
-
+  // Line 59~71 유저가 입력한 값을 State에 저장. 
   const submitModify = (e) => {
     e.preventDefault();
     axios
@@ -94,6 +94,8 @@ function UserInfo({ user, logout, deleteUserInfo }) {
       })
       .catch((err) => alert(err.response.data.message));
   };
+  //정보 수정하기 버튼을 눌렀을 때 실행하는 함수
+  //서버에 수정된 데이터를 담아 전송.
   return (
     <Container>
       <h2>내 정보 수정</h2>

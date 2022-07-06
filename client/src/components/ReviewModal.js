@@ -131,7 +131,21 @@ function ReviewModal({ isOpen, userInfo, shopId, alarmData }) {
                 withCredentials: true,
               }
             )
-            .then((resp) => console.log(resp));
+            .then((resp) => {
+              const formData = new FormData();
+      
+              for (let i = 0; i < submitFormData.length; i++) {
+                formData.append("file", submitFormData[i]);
+              }
+      
+              axios.post(
+                `${process.env.REACT_APP_API_URL}/review/upload/${userInfo.user_name}/${shopId}`,
+                formData,
+                {
+                  withCredentials: true,
+                }
+              );
+            })
         }
       })
       .then(() => {

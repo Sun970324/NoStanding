@@ -213,16 +213,18 @@ function ShopInfo({ userInfo }) {
       });
     setIsLoading(false);
   }, []);
+  //가게 상세정보 데이터를 서버에 요청하여 데이터를 받음.
   useEffect(() => {
     getPickedShopInfo();
   }, [getPickedShopInfo]);
   const clickImg = (idx) => {
     setCurrentImg(idx);
   };
-
+  //이미지를 클릭하면 대표 이미지가 바뀜
   const clickReservation = () => {
     setOpenReservation(!openReservation);
   };
+  //예약하기 버튼을 누르면 예약할 수 있는 창을 띄워줌.
   const clickBookmark = () => {
     setIsBookmarked(!isBookmarked);
     axios
@@ -241,6 +243,7 @@ function ShopInfo({ userInfo }) {
           : alert("즐겨찾기가 추가되었습니다.")
       );
   };
+  //즐겨찾기 추가, 해제
   return (
     <Container>
       {isLoading ? (

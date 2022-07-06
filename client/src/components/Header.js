@@ -134,6 +134,7 @@ function Header({
         });
     }
   },[])
+  //로그인이 되어있다면 alarm데이터를 요청하여 알람이 왔다는 것을 표시해줌.
   useEffect(() => {
     getData()
   }, [getData]);
@@ -141,6 +142,11 @@ function Header({
   const clickLoginButton = () => {
     setIsOpen(!isOpen);
   };
+  //로그인 모달창을 띄우는 함수
+  const controlClose = (val) => {
+    setIsOpen(val);
+  };
+  //로그인 모달창 닫는 함수 
   const clickLogoutBtn = () => {
     axios.post(`${process.env.REACT_APP_API_URL}/logout`).then((resp) => {
       logout();
@@ -148,17 +154,17 @@ function Header({
       navigate("/");
     });
   };
-  const controlClose = (val) => {
-    setIsOpen(val);
-  };
+  //로그아웃 요청함수.
   const searchText = (e) => {
     setSearchedshop(e.target.value);
   };
+  //검색 바에 유저가 입력한 데이터를 가져오는 함수
   const searchShop = (e) => {
     e.preventDefault();
     shopsearch(searchedshop);
     setSearchedshop("");
   };
+  //검색 버튼을 누를 때 검색된 내용을 띄워주는 함수
   const clickMypage = (e) => {
     if (loginState === false) {
       alert("로그인이 필요한 서비스입니다.");
@@ -171,7 +177,7 @@ function Header({
       }
     }
   };
-
+  //myPage page를 보여주는 함수.
   const clickAlarm = () => {
     if (loginState === false) {
       alert("로그인이 필요합니다");
@@ -180,6 +186,7 @@ function Header({
       setRingAlarm(false);
     }
   };
+  //알람종을 클릭하면 알람종 불 끄는 함수
   return (
     <Container>
       <Navbar>
